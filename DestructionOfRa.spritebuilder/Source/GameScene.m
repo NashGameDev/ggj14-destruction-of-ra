@@ -15,6 +15,7 @@
 @property (weak, nonatomic) CCLabelTTF *countDownLabel;
 
 @property (assign) NSInteger countDownNumber;
+@property (assign) CGFloat speedMultiplier;
 @property (assign) CGPoint velocity;
 
 @end
@@ -25,7 +26,8 @@
 {
     self = [super init];
     if (self) {
-        self.velocity = ccp(0.002f, 0.0f);
+        self.speedMultiplier = 2.0;
+        self.velocity = ccp(0.002f * self.speedMultiplier, 0.0f);
     }
     return self;
 }
@@ -70,15 +72,23 @@
 - (void)movePlayer:(CCTime)dt
 {
     self.player.position = ccpAdd(self.player.position, self.velocity);
-    
+    CGRect playerRect = self.player.boundingBox;
     // change direction at checkpointss
     for (CCNode *node in self.children) {
-        if ([node isKindOfClass:[Checkpoint class]]) {
-            Checkpoint *checkpoint = (Checkpoint *)node;
-            if (CGRectIntersectsRect(checkpoint.boundingBox, self.player.boundingBox)) {
-                self.velocity = ccp(checkpoint.dx, checkpoint.dy);
+        if (CGRectIntersectsRect(node.boundingBox, playerRect)) {
+            
+            if ([node isKindOfClass:[Checkpoint class]]) {
+                Checkpoint *checkpoint = (Checkpoint *)node;
+                self.velocity = ccp(checkpoint.dx * self.speedMultiplier, checkpoint.dy * self.speedMultiplier);
+            } else if ([node isKindOfClass:[HazardNode class]]) {
+                
+//                self.velocity = ccp(0, 0);
+                
             }
+            
+            
         }
+        
     }
 }
 

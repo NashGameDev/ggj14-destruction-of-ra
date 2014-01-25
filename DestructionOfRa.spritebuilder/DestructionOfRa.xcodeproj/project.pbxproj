@@ -28,7 +28,6 @@
 		B7378978180762440076A88C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896E180762440076A88C /* Default@2x.png */; };
 		B73789871807631A0076A88C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B73789851807631A0076A88C /* main.m */; };
 		B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B737894B180761A90076A88C /* libcocos2d.a */; };
-		B7378994180767190076A88C /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3117B978D7009739AE /* QuartzCore.framework */; };
 		B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3317B978D7009739AE /* OpenGLES.framework */; };
 		B77F1B3617B978D7009739AE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
@@ -42,6 +41,7 @@
 		FC581D4A189430B7002E6FA0 /* SessionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D47189430B7002E6FA0 /* SessionContainer.m */; };
 		FC581D4B189430B7002E6FA0 /* Transcript.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D49189430B7002E6FA0 /* Transcript.m */; };
 		FC581D5018945C71002E6FA0 /* MessageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D4F18945C71002E6FA0 /* MessageButton.m */; };
+		FCA26559189472640077CC48 /* HazardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA26558189472640077CC48 /* HazardNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,8 +88,6 @@
 		B737896E180762440076A88C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Source/Resources/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		B73789851807631A0076A88C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = SOURCE_ROOT; };
 		B73789861807631A0076A88C /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Source/Prefix.pch; sourceTree = SOURCE_ROOT; };
-		B7378992180767190076A88C /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Source/MainScene.h; sourceTree = "<group>"; };
-		B7378993180767190076A88C /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Source/MainScene.m; sourceTree = "<group>"; };
 		B77F1B2E17B978D7009739AE /* DestructionOfRa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DestructionOfRa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77F1B3117B978D7009739AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B77F1B3317B978D7009739AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -109,6 +107,8 @@
 		FC581D49189430B7002E6FA0 /* Transcript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transcript.m; sourceTree = "<group>"; };
 		FC581D4E18945C71002E6FA0 /* MessageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageButton.h; sourceTree = "<group>"; };
 		FC581D4F18945C71002E6FA0 /* MessageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageButton.m; sourceTree = "<group>"; };
+		FCA26557189472640077CC48 /* HazardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardNode.h; sourceTree = "<group>"; };
+		FCA26558189472640077CC48 /* HazardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +146,6 @@
 				FC581D45189430B7002E6FA0 /* Networking */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
-				B7378992180767190076A88C /* MainScene.h */,
-				B7378993180767190076A88C /* MainScene.m */,
 				FC581D4118942A09002E6FA0 /* SetupScene.h */,
 				FC581D4218942A09002E6FA0 /* SetupScene.m */,
 				338A8F291894222200043966 /* Player.h */,
@@ -156,6 +154,8 @@
 				338A8F2E18942AC800043966 /* GameScene.m */,
 				338A8F3618945DF900043966 /* Checkpoint.h */,
 				338A8F3718945DF900043966 /* Checkpoint.m */,
+				FCA26557189472640077CC48 /* HazardNode.h */,
+				FCA26558189472640077CC48 /* HazardNode.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -362,12 +362,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				338A8F2B1894222200043966 /* Player.m in Sources */,
+				FCA26559189472640077CC48 /* HazardNode.m in Sources */,
 				338A8F3818945DF900043966 /* Checkpoint.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				FC581D4B189430B7002E6FA0 /* Transcript.m in Sources */,
 				FC581D5018945C71002E6FA0 /* MessageButton.m in Sources */,
 				338A8F2F18942AC800043966 /* GameScene.m in Sources */,
-				B7378994180767190076A88C /* MainScene.m in Sources */,
 				FC581D4A189430B7002E6FA0 /* SessionContainer.m in Sources */,
 				FC581D4318942A09002E6FA0 /* SetupScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
