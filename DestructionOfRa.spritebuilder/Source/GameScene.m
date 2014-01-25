@@ -15,7 +15,6 @@
 @property (weak, nonatomic) CCLabelTTF *countDownLabel;
 
 @property (assign) NSInteger countDownNumber;
-//@property (assign) NSInteger direction;
 @property (assign) CGPoint velocity;
 
 @end
@@ -27,7 +26,6 @@
     self = [super init];
     if (self) {
         self.velocity = ccp(0.002f, 0.0f);
-//        _direction = kDirectionRight;
     }
     return self;
 }
