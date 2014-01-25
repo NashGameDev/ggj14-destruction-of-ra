@@ -34,6 +34,11 @@
     [SessionContainer sharedSession].delegate = self;
 }
 
+-(void) onExit {
+    [SessionContainer sharedSession].delegate = nil;
+    [super onExit];
+}
+
 -(void) hostPressed:(id)sender {
     SessionContainer* sessionContainer = [SessionContainer sharedSession];
     self.hosting = YES;
@@ -128,8 +133,10 @@
         }
     }
     
-//    [[CCDirector sharedDirector] presentScene:[CCBReader loadAsScene:@"MainScene"] withTransition:[CCTransition transitionMoveInWithDirection:CCTransitionDirectionLeft duration:0.3] ];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+        [[CCDirector sharedDirector] presentScene:scene withTransition:[CCTransition transitionMoveInWithDirection:CCTransitionDirectionLeft duration:0.3] ];
+    });
 }
 
 -(void)hostingTranscript:(Transcript *)transcript {

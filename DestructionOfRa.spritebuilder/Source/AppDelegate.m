@@ -33,7 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Configure Cocos2d with the options set in SpriteBuilder
-    NSMutableDictionary* cocos2dSetup = [NSMutableDictionary dictionaryWithContentsOfFile:[[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"configCocos2d.plist"]];
+    NSMutableDictionary* cocos2dSetup = [NSMutableDictionary dictionaryWithContentsOfFile:[[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"Published-iOS/configCocos2d.plist"]];
     
     // Note: this needs to happen before configureCCFileUtils is called, because we need apportable to correctly setup the screen scale factor.
 #ifdef APPORTABLE
@@ -56,7 +56,6 @@
 
 - (CCScene*) startScene
 {
-//    return [CCBReader loadAsScene:@"MainScene"];
     return [CCBReader loadAsScene:@"SetupScene"];
 }
 
