@@ -88,6 +88,11 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
+		<key>GameAssets/background.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+		</dict>
 		<key>PeevedPenguinsAssets</key>
 		<dict>
 			<key>isSmartSpriteSheet</key>
