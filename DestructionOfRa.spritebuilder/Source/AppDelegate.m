@@ -51,6 +51,8 @@
     
     [self setupCocos2dWithOptions:cocos2dSetup];
     
+    [CCBReader load:@"Player"];
+    
     return YES;
 }
 
