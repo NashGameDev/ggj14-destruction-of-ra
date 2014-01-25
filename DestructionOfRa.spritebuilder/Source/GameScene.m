@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "Checkpoint.h"
 
 @interface GameScene ()
 
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) CCLabelTTF *countDownLabel;
 
 @property (assign) NSInteger countDownNumber;
+@property (assign) CGPoint velocity;
 
 @end
 
@@ -23,6 +25,7 @@
 {
     self = [super init];
     if (self) {
+        self.velocity = ccp(0.002f, 0.0f);
     }
     return self;
 }
@@ -52,11 +55,31 @@
     else if (self.countDownNumber < 0) {
         [self unschedule:@selector(countDown)];
         [self removeChild:self.countDownLabel];
+        [self startGame];
     }
     else {
         self.countDownLabel.string = [NSString stringWithFormat:@"%i", self.countDownNumber];
     }
 }
 
+- (void)startGame
+{
+    [self schedule:@selector(movePlayer:) interval:1.0f/60.0f];
+}
+
+- (void)movePlayer:(CCTime)dt
+{
+    self.player.position = ccpAdd(self.player.position, self.velocity);
+    
+    // change direction at checkpointss
+    for (CCNode *node in self.children) {
+        if ([node isKindOfClass:[Checkpoint class]]) {
+            Checkpoint *checkpoint = (Checkpoint *)node;
+            if (CGRectIntersectsRect(checkpoint.boundingBox, self.player.boundingBox)) {
+                self.velocity = ccp(checkpoint.dx, checkpoint.dy);
+            }
+        }
+    }
+}
 
 @end
