@@ -38,6 +38,10 @@
 		B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
+		FC581D4318942A09002E6FA0 /* SetupScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D4218942A09002E6FA0 /* SetupScene.m */; };
+		FC581D4A189430B7002E6FA0 /* SessionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D47189430B7002E6FA0 /* SessionContainer.m */; };
+		FC581D4B189430B7002E6FA0 /* Transcript.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D49189430B7002E6FA0 /* Transcript.m */; };
+		FC581D5018945C71002E6FA0 /* MessageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC581D4F18945C71002E6FA0 /* MessageButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,14 @@
 		B77F1B3F17B978D7009739AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
+		FC581D4118942A09002E6FA0 /* SetupScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupScene.h; sourceTree = "<group>"; };
+		FC581D4218942A09002E6FA0 /* SetupScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupScene.m; sourceTree = "<group>"; };
+		FC581D46189430B7002E6FA0 /* SessionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionContainer.h; sourceTree = "<group>"; };
+		FC581D47189430B7002E6FA0 /* SessionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionContainer.m; sourceTree = "<group>"; };
+		FC581D48189430B7002E6FA0 /* Transcript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transcript.h; sourceTree = "<group>"; };
+		FC581D49189430B7002E6FA0 /* Transcript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transcript.m; sourceTree = "<group>"; };
+		FC581D4E18945C71002E6FA0 /* MessageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageButton.h; sourceTree = "<group>"; };
+		FC581D4F18945C71002E6FA0 /* MessageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +143,13 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FC581D45189430B7002E6FA0 /* Networking */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				FC581D4118942A09002E6FA0 /* SetupScene.h */,
+				FC581D4218942A09002E6FA0 /* SetupScene.m */,
 				338A8F291894222200043966 /* Player.h */,
 				338A8F2A1894222200043966 /* Player.m */,
 				338A8F2D18942AC800043966 /* GameScene.h */,
@@ -230,6 +245,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FC581D45189430B7002E6FA0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FC581D46189430B7002E6FA0 /* SessionContainer.h */,
+				FC581D47189430B7002E6FA0 /* SessionContainer.m */,
+				FC581D48189430B7002E6FA0 /* Transcript.h */,
+				FC581D49189430B7002E6FA0 /* Transcript.m */,
+				FC581D4E18945C71002E6FA0 /* MessageButton.h */,
+				FC581D4F18945C71002E6FA0 /* MessageButton.m */,
+			);
+			name = Networking;
+			path = Source/Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,7 +290,6 @@
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = 586EB56567;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -336,8 +364,12 @@
 				338A8F2B1894222200043966 /* Player.m in Sources */,
 				338A8F3818945DF900043966 /* Checkpoint.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
+				FC581D4B189430B7002E6FA0 /* Transcript.m in Sources */,
+				FC581D5018945C71002E6FA0 /* MessageButton.m in Sources */,
 				338A8F2F18942AC800043966 /* GameScene.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
+				FC581D4A189430B7002E6FA0 /* SessionContainer.m in Sources */,
+				FC581D4318942A09002E6FA0 /* SetupScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +430,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -414,7 +447,7 @@
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -432,6 +465,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -447,7 +481,7 @@
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",

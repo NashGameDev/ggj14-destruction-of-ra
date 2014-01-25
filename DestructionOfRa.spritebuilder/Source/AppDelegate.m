@@ -56,8 +56,7 @@
 
 - (CCScene*) startScene
 {
-    CCLOG(@"design size: %@", NSStringFromCGSize([[CCDirector sharedDirector] designSize]));
-    return [CCBReader loadAsScene:@"GameScene"];
+    return [CCBReader loadAsScene:@"SetupScene"];
 }
 
 @end
