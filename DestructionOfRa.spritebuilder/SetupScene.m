@@ -9,6 +9,7 @@
 #import "SetupScene.h"
 #import "SessionContainer.h"
 #import "MessageButton.h"
+#import "GameScene.h"
 
 @interface SetupScene () <MCBrowserViewControllerDelegate, SessionContainerDelegate>
 
@@ -35,7 +36,6 @@
 }
 
 -(void) onExit {
-    [SessionContainer sharedSession].delegate = nil;
     [super onExit];
 }
 
@@ -133,8 +133,12 @@
         }
     }
     
+    [[SessionContainer sharedSession] sendMessage:@"Start"];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+        GameScene* gameScene = scene.children.firstObject;
+        gameScene.hosting = YES;
         [[CCDirector sharedDirector] presentScene:scene withTransition:[CCTransition transitionMoveInWithDirection:CCTransitionDirectionLeft duration:0.3] ];
     });
 }
@@ -158,6 +162,22 @@
             self.host.visible = YES;
             self.ready.visible = NO;
         }
+    } else {
+        if ([transcript.message isEqualToString:@"Start"]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+                GameScene* gameScene = scene.children.firstObject;
+                gameScene.hosting = NO;
+                gameScene.playerHazardType = kPlayerHazard_Burning;
+                gameScene.playerSkillType = kPlayerSkill_Shield;
+                [[CCDirector sharedDirector] presentScene:scene withTransition:[CCTransition transitionMoveInWithDirection:CCTransitionDirectionLeft duration:0.2] ];
+            });
+
+            
+            
+        }
+        
     }
 }
 

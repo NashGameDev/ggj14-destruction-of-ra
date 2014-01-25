@@ -8,8 +8,11 @@
 
 #import "GameScene.h"
 #import "Checkpoint.h"
+#import "SessionContainer.h"
+#import "MessageButton.h"
 
-@interface GameScene ()
+@interface GameScene () <SessionContainerDelegate>
+
 
 @property (weak, nonatomic) CCSprite *player;
 @property (weak, nonatomic) CCLabelTTF *countDownLabel;
@@ -35,9 +38,21 @@
 - (void)onEnter
 {
     [super onEnter];
+    [SessionContainer sharedSession].delegate = self;
+    self.actionButton.visible = NO;
+
+    // display items
+    self.player.visible = self.hosting;
+    for (CCNode *node in self.children) {
+        if ([node isKindOfClass:[HazardNode class]]) {
+            HazardNode* hazard = (HazardNode*)node;
+            hazard.visible = hazard.hazardType == self.playerHazardType;
+        }
+    }
+
     
     // start countdown label
-    self.countDownNumber = 3;
+    self.countDownNumber = 1;
     CCLabelTTF *countDownLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", self.countDownNumber] fontName:@"Arial" fontSize:120];
     countDownLabel.color = [CCColor redColor];
     self.countDownLabel = countDownLabel;
@@ -66,7 +81,11 @@
 
 - (void)startGame
 {
-    [self schedule:@selector(movePlayer:) interval:1.0f/60.0f];
+    if (self.hosting) {
+        [self schedule:@selector(movePlayer:) interval:1.0f/60.0f];
+    } else {
+        self.actionButton.visible = YES;
+    }
 }
 
 - (void)movePlayer:(CCTime)dt
@@ -85,11 +104,50 @@
 //                self.velocity = ccp(0, 0);
                 
             }
-            
-            
         }
         
     }
 }
+
+#pragma mark - @protocol SessionContainerDelegate <NSObject>
+
+
+-(void)hostingReceived:(Transcript *)transcript {
+    
+    if ([transcript.message hasPrefix:kMessageButtonDownPrefix]) {
+        if ([transcript.message hasSuffix:@"A"]) {
+            CCAction* action = [CCActionRepeatForever actionWithAction:[CCActionSequence actions: [CCActionScaleTo actionWithDuration:0.3 scale:2.0], [CCActionScaleTo actionWithDuration:0.3 scale:0.5], nil]];
+            action.tag = kPlayerSkill_Shield;
+            [self.player runAction:action];
+        }
+        
+        
+    } else if ([transcript.message hasPrefix:kMessageButtonUpPrefix]) {
+        [self.player stopActionByTag:kPlayerSkill_Shield];
+        self.player.scale = 1.0;
+    }
+}
+
+-(void)clientTranscript:(Transcript *)transcript {
+    
+}
+
+
+// Method used to signal to UI an initial message, incoming image resource has been received
+- (void)receivedTranscript:(Transcript *)transcript {
+    NSLog(@"Received %@", transcript.message);
+    if (self.hosting) {
+        [self hostingReceived:transcript];
+    } else {
+        [self clientTranscript:transcript];
+    }
+}
+
+// Method used to signal to UI an image resource transfer (send or receive) has completed
+- (void)updateTranscript:(Transcript *)transcript {
+    NSLog(@"Update transcript %@", transcript);
+}
+
+
 
 @end

@@ -168,6 +168,10 @@
 {
     // Decode the incoming data to a UTF8 encoded string
     NSString *receivedMessage = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+
+    NSLog(@"Received %@", receivedMessage);
+
+    
     // Create an received transcript
     Transcript *transcript = [[Transcript alloc] initWithPeerID:peerID message:receivedMessage direction:TRANSCRIPT_DIRECTION_RECEIVE];
     

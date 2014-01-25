@@ -22,7 +22,8 @@ typedef NS_ENUM(NSUInteger, PlayerSkillType){
 @interface GameScene : CCNode
 
 @property (nonatomic) BOOL hosting;
-@property (nonatomic) PlayerSkillType skillType;
-@property (nonatomic) HazardType hazardType;
+@property (nonatomic) PlayerSkillType playerSkillType;
+@property (nonatomic) HazardType playerHazardType;
+@property (weak,nonatomic) CCButton* actionButton;
 
 @end

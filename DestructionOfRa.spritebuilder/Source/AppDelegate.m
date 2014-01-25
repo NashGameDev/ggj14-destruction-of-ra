@@ -27,6 +27,7 @@
 
 #import "AppDelegate.h"
 #import "CCBuilderReader.h"
+#import "GameScene.h"
 
 @implementation AppController
 
@@ -56,8 +57,12 @@
 
 - (CCScene*) startScene
 {
-//    return [CCBReader loadAsScene:@"SetupScene"];
-    return [CCBReader loadAsScene:@"GameScene"];
+    CCScene* scene = [CCBReader loadAsScene:@"SetupScene"];
+//    CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+//    GameScene* gameScene = scene.children.firstObject;
+//    gameScene.playerHazardType = kPlayerHazard_Burning;
+//    gameScene.hosting = YES;
+    return scene;
 }
 
 @end
