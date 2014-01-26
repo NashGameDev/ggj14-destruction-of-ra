@@ -57,11 +57,11 @@
 
 - (CCScene*) startScene
 {
-    CCScene* scene = [CCBReader loadAsScene:@"SetupScene"];
-//    CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
-//    GameScene* gameScene = scene.children.firstObject;
-//    gameScene.playerHazardType = kPlayerHazard_Burning;
-//    gameScene.hosting = YES;
+//    CCScene* scene = [CCBReader loadAsScene:@"SetupScene"];
+    CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+    GameScene* gameScene = scene.children.firstObject;
+    gameScene.playerHazardType = kPlayerHazard_Burning;
+    gameScene.hosting = YES;
     return scene;
 }
 
