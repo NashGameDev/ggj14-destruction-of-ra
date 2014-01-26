@@ -179,7 +179,7 @@
 		_endColorVar.b = 0.0f;
 		_endColorVar.a = 0.0f;
 
-		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"Published-iOS/ccbResources/ccbParticleFire.png"];
 
 		// additive
 		self.blendAdditive = YES;

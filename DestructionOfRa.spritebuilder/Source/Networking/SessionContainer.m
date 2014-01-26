@@ -106,11 +106,19 @@
 // Instance method for sending a string bassed text message to all remote peers
 - (Transcript *)sendMessage:(NSString *)message
 {
+    return [self sendMessage:message toPeers:self.session.connectedPeers];
+
+}
+- (Transcript *)sendMessage:(NSString *)message toPeer:(MCPeerID*)peer {
+    return [self sendMessage:message toPeers:@[peer]];
+}
+
+- (Transcript *)sendMessage:(NSString *)message toPeers:(NSArray*)peers {
     // Convert the string into a UTF8 encoded data
     NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
     // Send text message to all connected peers
     NSError *error;
-    [self.session sendData:messageData toPeers:self.session.connectedPeers withMode:MCSessionSendDataReliable error:&error];
+    [self.session sendData:messageData toPeers:peers withMode:MCSessionSendDataReliable error:&error];
     // Check the error return to know if there was an issue sending data to peers.  Note any peers in the 'toPeers' array argument are not connected this will fail.
     if (error) {
         NSLog(@"Error sending message to peers [%@]", error);
