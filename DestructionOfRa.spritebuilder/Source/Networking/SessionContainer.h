@@ -65,6 +65,7 @@
 - (id)initWithDisplayName:(NSString *)displayName serviceType:(NSString *)serviceType;
 // Method for sending text messages to all connected remote peers.  Returna a message type transcript
 - (Transcript *)sendMessage:(NSString *)message;
+- (Transcript *)sendMessage:(NSString *)message toPeer:(MCPeerID*)peer;
 // Method for sending image resources to all connected remote peers.  Returns an progress type transcript for monitoring tranfer
 - (Transcript *)sendImage:(NSURL *)imageUrl;
 

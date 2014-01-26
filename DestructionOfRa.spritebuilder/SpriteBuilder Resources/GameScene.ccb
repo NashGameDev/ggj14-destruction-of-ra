@@ -143,7 +143,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -377,7 +377,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -611,7 +611,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -845,7 +845,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1079,7 +1079,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1901,8 +1901,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -2075,6 +2073,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

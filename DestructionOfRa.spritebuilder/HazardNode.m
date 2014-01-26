@@ -15,15 +15,19 @@
 {
     self = [super init];
     if (self) {
-        CCParticleFire* fire = [[CCParticleFire alloc] initWithTotalParticles:50];
-        fire.position = ccp(0, 0);
-        [self addChild:fire];
     }
     return self;
 }
 
 -(void)onEnter {
     [super onEnter];
+    
+    if (self.hazardType == kPlayerHazard_Burning) {
+        CCParticleFire* fire = [[CCParticleFire alloc] initWithTotalParticles:50];
+        fire.position = ccp(0, 0);
+        [self addChild:fire];
+
+    }
 }
 
 @end
